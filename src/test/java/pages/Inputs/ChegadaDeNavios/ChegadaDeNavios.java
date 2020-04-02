@@ -13,7 +13,7 @@ public class ChegadaDeNavios extends BasePage {
     }
 
     public ChegadaDeNavios incluirChegadaNavios(String nomeNavio,String opera, String volFerro, String ETAmin, String ETAmax, String OBS ) throws InterruptedException {
-
+        Thread.sleep(2000);
         WebElement incluirchegada = navegador.findElement(By.xpath("/html/body/app-root/page/app-navigation/mat-sidenav-container/mat-sidenav-content/main/app-filter-page/div/div/app-inputs/folder-tabs/mat-tab-group/div/mat-tab-body[2]/div/div/app-ship-arrival/dynamic-table/div/table/thead/tr/th[11]/div/button"));
         incluirchegada.click();
 
@@ -24,6 +24,8 @@ public class ChegadaDeNavios extends BasePage {
         Thread.sleep(4000);
         WebElement mercadoria = navegador.findElement(By.xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/app-ship-arrival-modal/form/div/div[3]/div[1]/div[2]/mat-form-field/div/div[1]/div[3]/select-infinite-scroll-search/mat-select/div/div[2]"));
         mercadoria.click();
+
+        Thread.sleep(2000);
         navegador.findElement(By.xpath("/html/body/div[2]/div[4]/div/div/div/mat-option[2]")).click();
 
         Thread.sleep(1000);

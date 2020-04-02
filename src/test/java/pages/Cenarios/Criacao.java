@@ -119,8 +119,9 @@ public class Criacao extends BasePage {
     }
 
     public ImportacaoDados selecionarCenario(String numCen) throws InterruptedException {
-        Thread.sleep(2000);
-        navegador.findElement(By.xpath("//*[@id=\"mat-expansion-panel-header-"+ numCen +"\"]/span/mat-panel-title/app-header/div/div[1]/div")).click();
+        Thread.sleep(5000);
+        navegador.findElement(By.xpath("//*[@id=\"mat-expansion-panel-header-"+numCen+"\"]/span/mat-panel-title/app-header/div/div[1]/div")).click();
+
         return new ImportacaoDados(navegador);
     }
 

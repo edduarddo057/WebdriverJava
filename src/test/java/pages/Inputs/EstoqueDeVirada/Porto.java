@@ -13,7 +13,7 @@ public class Porto extends BasePage {
     }
 
     public Porto incluirEstoqueDeViradaPorto() throws InterruptedException {
-
+        Thread.sleep(2000);
         WebElement clickPorto = navegador.findElement(By.xpath("/html/body/app-root/page/app-navigation/mat-sidenav-container/mat-sidenav-content/main/app-filter-page/div/div/app-inputs/folder-tabs/mat-tab-group/div/mat-tab-body[3]/div/div/app-turn-stock/mat-accordion/accordion[2]/mat-expansion-panel/mat-expansion-panel-header/span/mat-icon"));
         clickPorto.click();
 
@@ -41,7 +41,7 @@ public class Porto extends BasePage {
         WebElement cliente = navegador.findElement(By.xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/app-modal-port/div[1]/form/div/div[1]/div[3]/mat-form-field/div/div[1]/div[3]/select-infinite-scroll-search/mat-select/div/div[2]"));
         cliente.click();
 
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         WebElement opcaoCliente = navegador.findElement(By.xpath("/html/body/div[2]/div[4]/div/div/div/mat-option[4]"));
         opcaoCliente.click();
 
@@ -60,6 +60,24 @@ public class Porto extends BasePage {
         Thread.sleep(500);
         WebElement salvar = navegador.findElement(By.xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/app-modal-port/div[1]/form/div/div[2]/button"));
         salvar.click();
+
+        return this;
+    }
+
+    public Porto excluirEstoqueDeViradaPorto() throws InterruptedException {
+        Thread.sleep(2000);
+        WebElement estoqueVirada = navegador.findElement(By.xpath("/html/body/app-root/page/app-navigation/mat-sidenav-container/mat-sidenav-content/main/app-filter-page/div/div/app-inputs/folder-tabs/mat-tab-group/div/mat-tab-body[3]/div/div/app-turn-stock/mat-accordion/accordion[2]/mat-expansion-panel/mat-expansion-panel-header/span/mat-icon"));
+        estoqueVirada.click();
+
+        Thread.sleep(1000);
+        WebElement excluir = navegador.findElement(By.xpath("/html/body/app-root/page/app-navigation/mat-sidenav-container/mat-sidenav-content/main/app-filter-page/div/div/app-inputs/folder-tabs/mat-tab-group/div/mat-tab-body[3]/div/div/app-turn-stock/mat-accordion/accordion[2]/mat-expansion-panel/div/div/div/dynamic-table/div/table/tbody/tr/td[6]/div/button[2]"));
+        excluir.click();
+
+        Thread.sleep(1000);
+        WebElement confirmarExcluir = navegador.findElement(By.xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/swal/div/div[2]/button[2]"));
+        confirmarExcluir.click();
+
+
 
         return this;
     }

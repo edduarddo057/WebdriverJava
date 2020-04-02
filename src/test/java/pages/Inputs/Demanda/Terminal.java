@@ -16,7 +16,7 @@ public class Terminal extends BasePage {
 
         PainelTerminal.click();
 
-        Thread.sleep(2000);
+        Thread.sleep(4000);
 
         WebElement operacao = navegador.findElement(By.xpath("/html/body/app-root/page/app-navigation/mat-sidenav-container/mat-sidenav-content/main/app-filter-page/div/div/app-inputs/folder-tabs/mat-tab-group/div/mat-tab-body[1]/div/div/app-demand/mat-accordion/accordion[2]/mat-expansion-panel/div/div/div/dynamic-table/div/table/tbody/tr["+opcao+"]/td[2]/div"));
         return !operacao.getText().isEmpty();

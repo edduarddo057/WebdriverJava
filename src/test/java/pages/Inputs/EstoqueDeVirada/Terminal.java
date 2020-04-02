@@ -57,4 +57,21 @@ public class Terminal extends BasePage {
 
         return this;
     }
+
+    public Terminal excluirEstoqueDeViradaTerminal() throws InterruptedException {
+        WebElement estoqueVirada = navegador.findElement(By.xpath("/html/body/app-root/page/app-navigation/mat-sidenav-container/mat-sidenav-content/main/app-filter-page/div/div/app-inputs/folder-tabs/mat-tab-group/div/mat-tab-body[3]/div/div/app-turn-stock/mat-accordion/accordion[1]/mat-expansion-panel/mat-expansion-panel-header/span/mat-icon"));
+        estoqueVirada.click();
+
+        Thread.sleep(1000);
+        WebElement excluir = navegador.findElement(By.xpath("/html/body/app-root/page/app-navigation/mat-sidenav-container/mat-sidenav-content/main/app-filter-page/div/div/app-inputs/folder-tabs/mat-tab-group/div/mat-tab-body[3]/div/div/app-turn-stock/mat-accordion/accordion[1]/mat-expansion-panel/div/div/div/dynamic-table/div/table/tbody/tr/td[6]/div/button[2]/span/mat-icon"));
+        excluir.click();
+
+        Thread.sleep(1000);
+        WebElement confirmarExcluir = navegador.findElement(By.xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/swal/div/div[2]/button[2]"));
+        confirmarExcluir.click();
+
+
+
+        return this;
+    }
 }

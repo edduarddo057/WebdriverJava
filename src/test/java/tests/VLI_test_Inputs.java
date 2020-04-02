@@ -20,6 +20,7 @@ import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
 
 public class VLI_test_Inputs {
     private WebDriver navegador;
@@ -34,9 +35,12 @@ public class VLI_test_Inputs {
         navegador = Web.createChrome();
         //navegador = Web.createLambdaTest();
 
+        navegador.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
+
         new LoginPage(navegador)
                 .FazerLogin("enacom@enacom.com.br","enacom123")
                 .selecionarCenario("0");
+                Thread.sleep(2000);
     }
 
     @Test
@@ -79,6 +83,7 @@ public class VLI_test_Inputs {
         WebElement clickChegada = navegador.findElement(By.xpath("/html/body/app-root/page/app-navigation/mat-sidenav-container/mat-sidenav-content/main/app-filter-page/div/div/app-inputs/folder-tabs/mat-tab-group/mat-tab-header/div[2]/div/div/div[2]/div"));
         clickChegada.click();
 
+        Thread.sleep(2000);
         new ChegadaDeNavios(navegador)
                 .incluirChegadaNavios("Navio","Sim" ,"250",Data_atual.plusMonths(1).format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))+"12:00",Data_atual.plusMonths(1).format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))+"22:00","Observação!");
 
@@ -119,6 +124,28 @@ public class VLI_test_Inputs {
         WebElement sucesso = navegador.findElement(By.xpath("/html/body/div[2]/div/div/snack-bar-container/simple-snack-bar/span"));
 
         assertEquals("Estoque de virada do porto criado com sucesso.",sucesso.getText());
+    }
+
+    @Test
+    public void testExcluirEstoqueViradaTerminal() throws InterruptedException {
+        Thread.sleep(2000);
+
+        new pages.Inputs.EstoqueDeVirada.Terminal(navegador).excluirEstoqueDeViradaTerminal();
+        Thread.sleep(2000);
+        WebElement sucesso = navegador.findElement(By.xpath("/html/body/div[2]/div/div/snack-bar-container/simple-snack-bar/span"));
+
+        assertEquals("Estoque de virada do terminal excluído com sucesso.",sucesso.getText());
+    }
+
+    @Test
+    public void testExcluirEstoqueViradaPorto() throws InterruptedException {
+        Thread.sleep(2000);
+
+        new Porto(navegador).excluirEstoqueDeViradaPorto();
+        Thread.sleep(2000);
+        WebElement sucesso = navegador.findElement(By.xpath("/html/body/div[2]/div/div/snack-bar-container/simple-snack-bar/span"));
+
+        assertEquals("Estoque de virada do porto excluído com sucesso.",sucesso.getText());
     }
 
     @After
